@@ -113,7 +113,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.Handle("/metrics", promhttp.Handler())
 	mux.Handle("/", gateway)
-	httpSrv := &http.Server{Addr: conf.GRPCListenAddress, Handler: mux}
+	httpSrv := &http.Server{Addr: conf.HTTPListenAddress, Handler: mux}
 
 	wg.Go(func() {
 		listener, err := net.Listen("tcp", conf.HTTPListenAddress)
